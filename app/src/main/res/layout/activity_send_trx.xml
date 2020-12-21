@@ -40,23 +40,6 @@
             android:weightSum="3">
 
 
-
-            <EditText
-                android:id="@+id/gasLimit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:text="21000"
-                android:layout_weight="1"
-                android:background="@null"
-                android:hint="Gas limit"
-                android:inputType="numberDecimal"
-                android:paddingTop="3dp"
-                android:paddingBottom="3dp"
-                android:textColor="@color/colorBlack" />
-
             <EditText
                 android:id="@+id/trxAmount"
                 android:layout_width="wrap_content"
@@ -66,7 +49,7 @@
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="ETH amount"
+                android:hint="TRX amount"
                 android:inputType="numberDecimal"
                 android:paddingTop="3dp"
                 android:paddingBottom="3dp"
@@ -94,12 +77,12 @@
             android:textColor="#FF0000" />
 
         <Button
-            android:id="@+id/sendEth"
+            android:id="@+id/sendTrx"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:text="Send ETH" />
+            android:text="Send TRX" />
 
 
     </LinearLayout>

@@ -30,9 +30,6 @@ public class CheckBalanceActivity extends AppCompatActivity {
         tronWalletManager.init(this);
         balanceBinding.checkBtn.setOnClickListener(v -> {
             String address = balanceBinding.address.getText().toString();
-//            if (!address.startsWith("0x")) {
-//                address = "0x" + address;
-//            }
 
             tronWalletManager.getBalanceTrx(address, this)
                     .subscribeOn(Schedulers.io())
@@ -41,7 +38,6 @@ public class CheckBalanceActivity extends AppCompatActivity {
 
                         balanceBinding.balanceTxt.setText("Trx balance: " + balance.toString());
                         balanceBinding.balanceTxt.setVisibility(View.VISIBLE);
-                     //   Toast.makeText(this, "Eth Balance : " + balance, Toast.LENGTH_SHORT).show();
 
                     }, error -> {
                         balanceBinding.balanceTxt.setVisibility(View.INVISIBLE);

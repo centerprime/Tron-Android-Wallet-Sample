@@ -26,13 +26,13 @@ public class CheckERCTokenBalanceActivity extends AppCompatActivity {
          * @return balance
          */
 
-        TronWalletManager ethManager = TronWalletManager.getInstance();
-        ethManager.init(this);
+        TronWalletManager tronWalletManager = TronWalletManager.getInstance();
+        tronWalletManager.init(this);
         binding.checkBtn.setOnClickListener(v -> {
 
             String walletAddress = binding.address.getText().toString().trim();
-            String erc20TokenContractAddress = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t";
-            ethManager.getTokenTRX20Balance(walletAddress, erc20TokenContractAddress, this)
+            String trx20TokenBalance = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t";
+            tronWalletManager.getTokenTRX20Balance(walletAddress, trx20TokenBalance, this)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(balance -> {

@@ -32,13 +32,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, ExportKeyStoreActivity.class));
         });
 
-//        binding.importByPrivatekey.setOnClickListener(v -> {
-//            startActivity(new Intent(MainActivity.this, ImportByPrivateKeyActivity.class));
-//        });
-//
-//        binding.exportPrivateKey.setOnClickListener(v -> {
-//            startActivity(new Intent(MainActivity.this, ExportPrivateKeyActivity.class));
-//        });
 
         binding.sendTrx.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, SendTrxActivity.class));
@@ -46,9 +39,7 @@ public class MainActivity extends AppCompatActivity {
         binding.checkERCTokenkBalance.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, CheckERCTokenBalanceActivity.class));
         });
-//        binding.sendERCToken.setOnClickListener(v -> {
-//            startActivity(new Intent(MainActivity.this, SendERCTokenActivity.class));
-//        });
+
 
 
     }

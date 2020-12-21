@@ -1,5 +1,6 @@
 package com.example.centerprimesampletronsdk;
 
+import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class CreateWalletActivity extends AppCompatActivity {
+
+    ProgressDialog progressDialog;
 
     ActivityCreateWalletBinding binding;
     @Override
@@ -40,12 +43,17 @@ public class CreateWalletActivity extends AppCompatActivity {
                     && binding.password.getText().toString().trim().length() >= 6
                     && binding.confirmPassword.getText().toString().trim().length() >= 6) {
 
+                progressDialog = ProgressDialog.show(CreateWalletActivity.this, "",
+                        "Creating TRX wallet address...", true);
+
+
             tronWalletManager.createWallet(binding.password.getText().toString(), this)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(walletAddress -> {
 
-                        Toast.makeText(this, "Click", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+
                         binding.address.setText(walletAddress.getAddress());
 
                         binding.copy.setVisibility(View.VISIBLE);
