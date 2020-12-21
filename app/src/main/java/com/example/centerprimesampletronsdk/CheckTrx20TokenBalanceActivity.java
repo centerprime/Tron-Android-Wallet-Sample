@@ -11,7 +11,7 @@ import com.example.centerprimesampletronsdk.databinding.ActivityErc20TokenBalanc
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class CheckERCTokenBalanceActivity extends AppCompatActivity {
+public class CheckTrx20TokenBalanceActivity extends AppCompatActivity {
     ActivityErc20TokenBalanceBinding binding;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

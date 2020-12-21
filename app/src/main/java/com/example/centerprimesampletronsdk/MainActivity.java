@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, SendTrxActivity.class));
         });
         binding.checkERCTokenkBalance.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, CheckERCTokenBalanceActivity.class));
+            startActivity(new Intent(MainActivity.this, CheckTrx20TokenBalanceActivity.class));
         });
 
 
