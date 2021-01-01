@@ -1,4 +1,4 @@
-# TRX-Wallet-Android-Sample
+# Tron Android Wallet Sample
 
 ## Overview 
 
