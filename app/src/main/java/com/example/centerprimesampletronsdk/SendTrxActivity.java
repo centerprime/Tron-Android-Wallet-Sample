@@ -29,7 +29,6 @@ public class SendTrxActivity extends AppCompatActivity {
          * @return transactionHash
          */
 
-
         TronWalletManager tronWalletManager = TronWalletManager.getInstance();
         /**
          * @param context - Initialize tronWalletManager
