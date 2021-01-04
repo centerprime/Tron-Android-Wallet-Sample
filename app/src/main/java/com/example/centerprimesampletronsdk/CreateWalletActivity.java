@@ -24,45 +24,45 @@ public class CreateWalletActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create_wallet);
 
-        /**
-         * Using this createWallet function user can create a wallet.
-         *
-         * @params password, Context
-         *
-         * @return walletAddress
-         */
-
         TronWalletManager tronWalletManager = TronWalletManager.getInstance();
+        /**
+         * @param context - Initialize tronWalletManager
+         */
         tronWalletManager.init(this);
 
         binding.createWallet.setOnClickListener(v -> {
-
 
             if(!TextUtils.isEmpty(binding.password.getText().toString()) && !TextUtils.isEmpty(binding.confirmPassword.getText().toString())
                     && binding.password.getText().toString().equals(binding.confirmPassword.getText().toString())
                     && binding.password.getText().toString().trim().length() >= 6
                     && binding.confirmPassword.getText().toString().trim().length() >= 6) {
-
+                /**
+                 * Using this createWallet function user can create a wallet.
+                 *
+                 * @param password - must be provided password to wallet address
+                 * @param Context - activity context
+                 *
+                 * @return walletAddress
+                 */
                 progressDialog = ProgressDialog.show(CreateWalletActivity.this, "",
                         "Creating TRX wallet address...", true);
-
 
             tronWalletManager.createWallet(binding.password.getText().toString(), this)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(walletAddress -> {
-
+                        /**
+                         * if function successfully completes result can be caught in this block
+                         */
                         progressDialog.dismiss();
-
                         binding.address.setText(walletAddress.getAddress());
-
                         binding.copy.setVisibility(View.VISIBLE);
-
                         System.out.println(walletAddress);
 
-
                     }, error -> {
-
+                        /**
+                         * if function fails error can be catched in this block
+                         */
                         Toast.makeText(this, error.getMessage(), Toast.LENGTH_SHORT).show();
 
                     });

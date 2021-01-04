@@ -31,6 +31,9 @@ public class SendTrxActivity extends AppCompatActivity {
 
 
         TronWalletManager tronWalletManager = TronWalletManager.getInstance();
+        /**
+         * @param context - Initialize tronWalletManager
+         */
         tronWalletManager.init(this);
 
         binding.sendTrx.setOnClickListener(v -> {
@@ -48,11 +51,10 @@ public class SendTrxActivity extends AppCompatActivity {
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(tx -> {
-
+                            binding.result.setText("TX: " + tx);
                             Toast.makeText(this, "TX : " + tx, Toast.LENGTH_SHORT).show();
 
                         }, error -> {
-
                             binding.result.setText(error.getMessage() + ". Please check balance of provided walletaddress!");
 
                             error.printStackTrace();

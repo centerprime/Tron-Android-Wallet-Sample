@@ -19,20 +19,15 @@ public class MainActivity extends AppCompatActivity {
         binding.createBtn.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, CreateWalletActivity.class));
         });
-
         binding.importBtn.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, ImportWalletFromKeyStoreActivity.class));
         });
-
         binding.checkBalance.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, CheckBalanceActivity.class));
         });
-
         binding.exportKeystore.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, ExportKeyStoreActivity.class));
         });
-
-
         binding.sendTrx.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, SendTrxActivity.class));
         });

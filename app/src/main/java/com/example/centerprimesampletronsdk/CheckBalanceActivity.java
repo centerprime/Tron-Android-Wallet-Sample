@@ -18,32 +18,38 @@ public class CheckBalanceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         balanceBinding = DataBindingUtil.setContentView(this, R.layout.activity_check_balance);
 
-        /**
-         * Using this getBalanceTrx function you can check balance of provided walletAddress.
-         *
-         * @params walletAddress, context
-         *
-         * @return balance
-         */
-
         TronWalletManager tronWalletManager = TronWalletManager.getInstance();
+        /**
+         * @param context - Initialize tronWalletManager
+         */
         tronWalletManager.init(this);
         balanceBinding.checkBtn.setOnClickListener(v -> {
+            /**
+             * Using this getBalanceTrx function you can check balance of provided walletAddress.
+             *
+             * @param walletAddress - which user want to check it's balance
+             * @param context - activity context
+             *
+             * @return if the function completes successfully returns balance of provided wallet address or returns error name
+             */
             String address = balanceBinding.address.getText().toString();
 
             tronWalletManager.getBalanceTrx(address, this)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(balance -> {
-
-                        balanceBinding.balanceTxt.setText("Trx balance: " + balance.toString());
+                        /**
+                         * if function successfully completes result can be caught in this block
+                         */
+                        balanceBinding.balanceTxt.setText("TRX balance: " + balance.toString());
                         balanceBinding.balanceTxt.setVisibility(View.VISIBLE);
 
                     }, error -> {
+                        /**
+                         * if function fails error can be caught in this block
+                         */
                         balanceBinding.balanceTxt.setVisibility(View.INVISIBLE);
-
                         System.out.println(error.getMessage());
-
                         Toast.makeText(this,  error.getMessage(), Toast.LENGTH_SHORT).show();
 
                     });
